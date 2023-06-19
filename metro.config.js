@@ -4,7 +4,13 @@
  *
  * @format
  */
-
+const path = require('path');
+const extraNodeModules = {
+  'react-native-youtube-unlimited-sdk': path.join(
+    __dirname + '/../youtube-unlimited-sdk',
+  ),
+};
+const watchFolders = [path.join(__dirname + '/../youtube-unlimited-sdk')];
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
@@ -14,4 +20,8 @@ module.exports = {
       },
     }),
   },
+  resolver: {
+    extraNodeModules,
+  },
+  watchFolders,
 };
